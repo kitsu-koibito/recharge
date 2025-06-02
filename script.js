@@ -14,14 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const messages = [
         { threshold: 0, message: "Tap to start charging..." },
         { threshold: 1, message: "Charging..." },
-        { threshold: 20, message: "Forget the bad memory..." },
-        { threshold: 30, message: "Take some deep breath in..." },
-        { threshold: 40, message: "You're doing great..." },
+        { threshold: 25, message: "Forget the bad memory..." },
+        { threshold: 40, message: "Take some deep breath in..." },
         { threshold: 50, message: "You're halfway there..." },
-        { threshold: 60, message: "Slowly and gently breathe out..." },
         { threshold: 75, message: "Think of something cute..." },
-        { threshold: 80, message: "Power save mode turning off..." },
-        { threshold: 90, message: "Almost there..." },
+        { threshold: 85, message: "Almost there..." },
         { threshold: 95, message: "Smile..." },
         { threshold: 100, message: "Fully charged! ❤️" }
     ];
