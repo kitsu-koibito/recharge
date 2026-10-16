@@ -9,8 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentLevel = 0;
     let chargingInterval;
     let isCharging = false;
-    
-    // Messages to display based on battery percentage
+
     const messages = [
         { threshold: 0, message: "Tap to start charging..." },
         { threshold: 1, message: "Charging..." },
@@ -25,21 +24,19 @@ document.addEventListener('DOMContentLoaded', () => {
         { threshold: 95, message: "Smile..." },
         { threshold: 100, message: "Fully charged! ❤️" }
     ];
-    
-    // Start or continue charging
+
     function startCharging() {
         if (isCharging) return;
         
         isCharging = true;
-        rechargeBtn.style.display = 'none'; // Hide button immediately
+        rechargeBtn.style.display = 'none';
         batteryMessage.textContent = "Charging...";
         
         chargingInterval = setInterval(() => {
             if (currentLevel < 100) {
                 currentLevel += 1;
                 updateBatteryDisplay();
-                
-                // Create heart particles when charging
+
                 if (currentLevel % 5 === 0) {
                     createHeart();
                 }
@@ -49,27 +46,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, 100);
     }
-    
-    // Stop charging
+
     function stopCharging() {
         clearInterval(chargingInterval);
         isCharging = false;
-        
-        // Show reminder container when fully charged
+
         if (currentLevel >= 100) {
             setTimeout(() => {
                 reminderContainer.classList.remove('hidden');
                 reminderContainer.classList.add('visible');
-            }, 1000); // Reduced to 1 second delay
+            }, 1000);
         }
     }
-    
-    // Update the battery display
+
     function updateBatteryDisplay() {
         batteryLevel.style.width = `${currentLevel}%`;
         batteryPercentage.textContent = `${currentLevel}%`;
-        
-        // Update message based on current level
+
         for (let i = messages.length - 1; i >= 0; i--) {
             if (currentLevel >= messages[i].threshold) {
                 batteryMessage.textContent = messages[i].message;
@@ -77,8 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
-    
-    // Create heart particle effect
+
     function createHeart() {
         const heart = document.createElement('div');
         heart.classList.add('heart');
@@ -91,26 +83,22 @@ document.addEventListener('DOMContentLoaded', () => {
             heart.remove();
         }, 3000);
     }
-    
-    // Celebration when fully charged
+
     function celebrate() {
         batteryMessage.textContent = "Fully charged! ❤️";
-        
-        // Create multiple hearts for celebration
+
         for (let i = 0; i < 15; i++) {
             setTimeout(() => {
                 createHeart();
             }, i * 200);
         }
     }
-    
-    // Create falling sakura petals
+
     function createSakuraPetals() {
         for (let i = 0; i < 20; i++) {
             const petal = document.createElement('div');
             petal.classList.add('sakura-petal');
-            
-            // Randomize petal properties
+
             const size = Math.random() * 15 + 5;
             petal.style.width = `${size}px`;
             petal.style.height = `${size}px`;
@@ -122,16 +110,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Handle button click
     rechargeBtn.addEventListener('click', startCharging);
-    
-    // Click on battery also starts charging
     document.querySelector('.battery').addEventListener('click', startCharging);
-    
-    // Create the initial sakura petals
+
     createSakuraPetals();
-    
-    // Periodically create new petals
+
     setInterval(() => {
         const petal = document.createElement('div');
         petal.classList.add('sakura-petal');
@@ -144,14 +127,12 @@ document.addEventListener('DOMContentLoaded', () => {
         petal.style.opacity = Math.random() * 0.6 + 0.3;
         
         sakuraContainer.appendChild(petal);
-        
-        // Remove old petals to prevent too many elements
+
         if (sakuraContainer.children.length > 50) {
             sakuraContainer.removeChild(sakuraContainer.children[0]);
         }
     }, 500);
-    
-    // Add additional styles for heart animation
+
     const style = document.createElement('style');
     style.textContent = `
         body {

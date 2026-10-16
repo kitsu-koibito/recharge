@@ -42,7 +42,6 @@ h1 {
     font-weight: 600;
 }
 
-/* Battery styling */
 .battery-container {
     display: flex;
     justify-content: center;
@@ -116,7 +115,6 @@ button:active {
     transform: translateY(1px);
 }
 
-/* Sakura petals */
 .sakura-petal {
     position: absolute;
     background-color: #ffb7c5;
